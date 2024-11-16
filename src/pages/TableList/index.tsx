@@ -3,13 +3,17 @@ import { columns } from './config';
 import { nanoid } from 'nanoid';
 
 export default function Index() {
-  return <div>
-    <EditableProTable columns={columns} rowKey={'id'} recordCreatorProps={{
-      record: {
-        id: nanoid(),
-      },
-    }}>
-
-    </EditableProTable>
-  </div>
+  return (
+    <div>
+      <EditableProTable
+        columns={columns}
+        rowKey={'id'}
+        recordCreatorProps={{
+          record: {
+            id: nanoid(),
+          },
+        }}
+      ></EditableProTable>
+    </div>
+  );
 }

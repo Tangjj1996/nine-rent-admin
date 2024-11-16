@@ -8,6 +8,7 @@ export const columns: ProColumns<any>[] = [
   {
     title: '内容',
     dataIndex: 'content',
+    valueType: 'textarea'
   },
   {
     title: '标签',

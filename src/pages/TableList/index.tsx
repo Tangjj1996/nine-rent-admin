@@ -41,6 +41,7 @@ export default function Index() {
         recordCreatorProps={{
           record: {
             id: nanoid(),
+            tableEntityType: 'add', // 新增一行
           },
         }}
         request={async () => {
@@ -58,7 +59,6 @@ export default function Index() {
             };
           }
         }}
-        editable={{}}
       ></EditableProTable>
     </div>
   );

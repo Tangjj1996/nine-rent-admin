@@ -1,6 +1,7 @@
 import { ProColumns } from '@ant-design/pro-components';
 import { Typography, Image, Space, Input } from 'antd';
 import MutiplyInput from '@/components/MutiplyInput';
+import FieldList from '@/components/FieldList';
 
 export const columns: ProColumns<any>[] = [
   {
@@ -24,7 +25,13 @@ export const columns: ProColumns<any>[] = [
   {
     title: '标签',
     dataIndex: 'tags',
-    renderFormItem: () => <MutiplyInput style={{ width: 200 }} />,
+    renderFormItem(schema, config) {
+      if (config.record.tableEntityType === 'add') {
+        return <FieldList />;
+      }
+
+      return <MutiplyInput style={{ width: 200 }} />;
+    },
     render(dom) {
       return (
         <Space style={{ width: 200 }}>
@@ -50,7 +57,12 @@ export const columns: ProColumns<any>[] = [
   {
     title: '图片集',
     dataIndex: 'swiper',
-    renderFormItem: () => <MutiplyInput style={{ width: 400 }} />,
+    renderFormItem(schema, config) {
+      if (config.record.tableEntityType === 'add') {
+        return <FieldList />;
+      }
+      return <MutiplyInput style={{ width: 400 }} />;
+    },
     render: (value) => (
       <Space direction="vertical">
         {(value as string[]).map((val, index) => (

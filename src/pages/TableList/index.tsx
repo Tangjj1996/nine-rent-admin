@@ -34,40 +34,38 @@ async function mockFechData() {
 
 export default function Index() {
   return (
-    <div>
-      <EditableProTable
-        columns={columns}
-        rowKey={'id'}
-        recordCreatorProps={{
-          record: {
-            id: nanoid(),
-            tableEntityType: 'add', // 新增一行
-          },
-        }}
-        request={async () => {
-          try {
-            const { code, data } = await mockFechData();
+    <EditableProTable
+      columns={columns}
+      rowKey={'id'}
+      recordCreatorProps={{
+        record: {
+          id: nanoid(),
+          tableEntityType: 'add', // 新增一行
+        },
+      }}
+      request={async () => {
+        try {
+          const { code, data } = await mockFechData();
 
-            return {
-              success: code === 200,
-              total: data.total,
-              data: data.lsit,
-            };
-          } catch (e) {
-            return {
-              success: false,
-            };
-          }
-        }}
-        editable={{
-          onSave: async () => {
-            return Promise.reject(new Error('222'));
-          },
-          actionRender: (row, config, defaultDoms) => {
-            return [defaultDoms.save, defaultDoms.cancel];
-          },
-        }}
-      />
-    </div>
+          return {
+            success: code === 200,
+            total: data.total,
+            data: data.lsit,
+          };
+        } catch (e) {
+          return {
+            success: false,
+          };
+        }
+      }}
+      editable={{
+        onSave: async () => {
+          return Promise.reject(new Error('222'));
+        },
+        actionRender: (row, config, defaultDoms) => {
+          return [defaultDoms.save, defaultDoms.cancel];
+        },
+      }}
+    />
   );
 }

@@ -59,7 +59,15 @@ export default function Index() {
             };
           }
         }}
-      ></EditableProTable>
+        editable={{
+          onSave: async () => {
+            return Promise.reject(new Error('222'));
+          },
+          actionRender: (row, config, defaultDoms) => {
+            return [defaultDoms.save, defaultDoms.cancel];
+          },
+        }}
+      />
     </div>
   );
 }
